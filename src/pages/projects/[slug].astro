@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { projects } from '../../data/projects';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+};
+
+const { project } = Astro.props;
+---
+
+<BaseLayout title={`${project.title} | Vibe Software`} description={project.description}>
+  <a href="/#work" class="back-link">&larr; Back to Work</a>
+
+  <div class="project-hero-detail">
+    <img src={project.banner} alt={project.title} />
+    <div class="overlay">
+      <div class="inner">
+        <h1>{project.title}</h1>
+        {project.subtitle && <div class="subtitle">{project.subtitle}</div>}
+      </div>
+    </div>
+  </div>
+
+  <div class="project-content">
+    <div class="project-meta">
+      <span class="badge">{project.platforms}</span>
+      {project.techStack.map((t) => (
+        <span class="badge">{t.name}</span>
+      ))}
+    </div>
+
+    <p class="project-description">{project.description}</p>
+
+    {project.sections.length > 0 && (
+      <>
+        <h3 class="project-sections-heading">Features</h3>
+        {project.sections.map((section) => (
+          <div class="project-section-card">
+            <div class="section-img">
+              <img src={section.image} alt={section.title} loading="lazy" />
+            </div>
+            <div class="section-text">
+              <h3>{section.title}</h3>
+              <p>{section.description}</p>
+            </div>
+          </div>
+        ))}
+      </>
+    )}
+  </div>
+</BaseLayout>

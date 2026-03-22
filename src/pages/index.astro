@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { projects } from '../data/projects';
+---
+
+<BaseLayout title="Vibe Software | Custom Mobile & Web Development">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="badge">Mobile &middot; Web &middot; Cloud</div>
+    <h1>Custom mobile apps powered by <span class="gradient">real-world data</span></h1>
+    <p>Built to work where it matters. Vibe Software specializes in sensor-driven, GPS-enabled, and cloud-connected mobile apps for businesses of all sizes.</p>
+    <div class="hero-buttons">
+      <a href="#showcase" class="btn btn-primary">See Our Latest</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- RideMetrx Showcase -->
+  <section class="showcase" id="showcase">
+    <div class="showcase-inner">
+      <div class="showcase-text">
+        <div class="section-label">Featured Product</div>
+        <div class="showcase-logo-row">
+          <img src="/images/ridemetrx/ride_metrx_app_icon.png" alt="RideMetrx" class="showcase-app-icon" />
+          <h2>RideMetrx</h2>
+        </div>
+        <p class="showcase-tagline">Suspension tuning, backed by data.</p>
+        <p class="showcase-desc">
+          RideMetrx transforms your phone into a suspension analysis tool. Using accelerometer and GPS data,
+          it detects trail roughness and lets riders A/B test suspension changes with measurable results —
+          replacing $300+ hardware sensors with an app that costs a fraction of the price.
+        </p>
+        <div class="showcase-features">
+          <div class="showcase-feature">
+            <strong>Metrx Engine</strong>
+            <span>Record rides, generate roughness heatmaps, and objectively compare settings</span>
+          </div>
+          <div class="showcase-feature">
+            <strong>Community Database</strong>
+            <span>Browse and share proven suspension setups with GPS-tagged trail data</span>
+          </div>
+          <div class="showcase-feature">
+            <strong>Service Tracking</strong>
+            <span>Maintenance reminders with optional Strava integration for automatic hour logging</span>
+          </div>
+          <div class="showcase-feature">
+            <strong>Offline-First</strong>
+            <span>Fully functional without connectivity — cloud sync for Pro subscribers</span>
+          </div>
+        </div>
+        <div class="showcase-tech">
+          <span class="tech-tag">Flutter</span>
+          <span class="tech-tag">Firebase</span>
+          <span class="tech-tag">RevenueCat</span>
+          <span class="tech-tag">Strava API</span>
+          <span class="tech-tag">Accelerometer</span>
+          <span class="tech-tag">GPS</span>
+        </div>
+        <div class="showcase-cta">
+          <a href="https://ridemetrx.app" target="_blank" rel="noopener" class="btn btn-primary">Visit ridemetrx.app &rarr;</a>
+        </div>
+      </div>
+      <div class="phone-slideshow">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <img src="/images/ridemetrx/evil_offering.png" alt="Bike garage view" class="slide active" />
+            <img src="/images/ridemetrx/pisgah_social_setting.png" alt="Suspension settings" class="slide" />
+            <img src="/images/ridemetrx/results_map.png" alt="Ride results map" class="slide" />
+            <img src="/images/ridemetrx/metrx_ab_comparison_segments.png" alt="A/B segment analysis" class="slide" />
+            <img src="/images/ridemetrx/community_settings_list.png" alt="Community settings" class="slide" />
+            <img src="/images/ridemetrx/import_setting_comparison.png" alt="Settings comparison" class="slide" />
+            <img src="/images/ridemetrx/service_reminder_list.png" alt="Service reminders" class="slide" />
+          </div>
+        </div>
+        <div class="slide-dots">
+          <button class="dot active" aria-label="Slide 1"></button>
+          <button class="dot" aria-label="Slide 2"></button>
+          <button class="dot" aria-label="Slide 3"></button>
+          <button class="dot" aria-label="Slide 4"></button>
+          <button class="dot" aria-label="Slide 5"></button>
+          <button class="dot" aria-label="Slide 6"></button>
+          <button class="dot" aria-label="Slide 7"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section" id="services">
+    <div class="section-label">What We Do</div>
+    <h2>Services</h2>
+    <p>From concept to deployment, we handle the full product lifecycle.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="icon">&#128241;</div>
+        <h3>Mobile Development</h3>
+        <p>Cross-platform iOS and Android apps built with Flutter for native performance and a single codebase.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">&#127760;</div>
+        <h3>Web Applications</h3>
+        <p>Responsive web apps and admin dashboards using modern frameworks, tailored to your workflow.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">&#9729;&#65039;</div>
+        <h3>Cloud & Backend</h3>
+        <p>Firebase, AWS, and custom APIs — we architect backends that scale with your business.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">&#128640;</div>
+        <h3>Strategy & Consulting</h3>
+        <p>Technical guidance on architecture, platform selection, and product roadmap planning.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Projects -->
+  <section class="section" id="work">
+    <div class="section-label">Client Work</div>
+    <h2>More Projects</h2>
+    <p>A selection of apps we've delivered for clients across industries.</p>
+
+    <div class="projects-grid">
+      {projects.map((project) => (
+        <a href={`/projects/${project.slug}`} class="project-card">
+          <div class="card-image">
+            <img src={project.banner} alt={project.title} loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3>{project.title}</h3>
+            <div class="tag">{project.platforms}</div>
+            <p>{project.description}</p>
+            <div class="tech-tags">
+              {project.techStack.map((t) => (
+                <span class="tech-tag">{t.name}</span>
+              ))}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact-section" id="contact">
+    <div class="section-label">Get Started</div>
+    <h2>Let's build something great</h2>
+    <p>Tell us about your project and we'll get back to you within a business day.</p>
+
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+      <input type="hidden" name="form-name" value="contact" />
+      <p class="hidden" aria-hidden="true">
+        <label>Don't fill this out: <input name="bot-field" /></label>
+      </p>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" required />
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Send Message &rarr;</button>
+    </form>
+  </section>
+  <script>
+    const slides = document.querySelectorAll<HTMLImageElement>('.slide');
+    const dots = document.querySelectorAll<HTMLButtonElement>('.dot');
+    let current = 0;
+    let timer: ReturnType<typeof setInterval>;
+
+    function goTo(index: number) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = index;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function next() {
+      goTo((current + 1) % slides.length);
+    }
+
+    function startTimer() {
+      timer = setInterval(next, 3500);
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        clearInterval(timer);
+        goTo(i);
+        startTimer();
+      });
+    });
+
+    startTimer();
+  </script>
+</BaseLayout>
