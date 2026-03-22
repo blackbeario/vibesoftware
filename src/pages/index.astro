@@ -149,7 +149,7 @@ import { projects } from '../data/projects';
     <h2>Let's build something great</h2>
     <p>Tell us about your project and we'll get back to you within a business day.</p>
 
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+    <form name="contact" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
       <input type="hidden" name="form-name" value="contact" />
       <p class="hidden" aria-hidden="true">
         <label>Don't fill this out: <input name="bot-field" /></label>
